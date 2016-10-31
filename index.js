@@ -1,8 +1,10 @@
 const format = require('chalk')
 const symbols = require('figures')
 const {obj: through} = require('throo')
+const duplex = require('duplexer')
+const formSynopsis = require('tap-form-synopsis')
 
-const synopsis = () => through((push, synopsis, enc, cb) => {
+const display = () => through((push, synopsis, enc, cb) => {
   if (synopsis.tests === 0) {
     push(format.red(symbols.cross + ' No tests found') + '\n')
   } else {
@@ -15,5 +17,14 @@ const synopsis = () => through((push, synopsis, enc, cb) => {
   }
   cb()
 })
+
+const synopsis = () => {
+  const formSynopsisStream = formSynopsis()
+  const displayStream = formSynopsisStream
+    .pipe(display())
+  return duplex(formSynopsisStream, displayStream)
+}
+
+synopsis.display = display
 
 module.exports = synopsis

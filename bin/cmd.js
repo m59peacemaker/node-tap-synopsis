@@ -2,7 +2,7 @@
 
 const {obj: through} = require('throo')
 const formSynopsis = require('tap-form-synopsis')
-const synopsis = require('../')
+const {display} = require('../')
 
 process.stdin
   .pipe(formSynopsis())
@@ -13,5 +13,5 @@ process.stdin
     push(synopsis)
     cb()
   }))
-  .pipe(synopsis())
+  .pipe(display())
   .pipe(process.stdout)

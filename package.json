@@ -1,6 +1,6 @@
 {
   "name": "tap-synopsis",
-  "version": "0.0.0",
+  "version": "0.3.0",
   "description": "Receives streaming TAP and outputs a colorful summary.",
   "keywords": [
     "TAP",
@@ -29,6 +29,7 @@
   "license": "VOL",
   "dependencies": {
     "chalk": "^1.1.3",
+    "duplexer": "^0.1.1",
     "figures": "^2.0.0",
     "tap-form-synopsis": "^1.0.0",
     "throo": "^1.0.0",
