@@ -13,5 +13,5 @@ process.stdin
     push(synopsis)
     cb()
   }))
-  .pipe(synopsis.styled())
+  .pipe(synopsis())
   .pipe(process.stdout)
